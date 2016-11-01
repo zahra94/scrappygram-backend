@@ -74,39 +74,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'james',
-	'password' => 'james',
-	'database' => 'ci_scrappygram',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE,
-);
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'localhost',
+// 	'username' => 'james',
+// 	'password' => 'james',
+// 	'database' => 'ci_scrappygram',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE,
+// );
 
 
-
-/*
 // PostgreSql Configuration
+$dbopts = parse_url(getenv('DATABASE_URL'));
+
 $db['default'] = array(
-        'dsn'   => 'pgsql:host=localhost;port=5432;dbname=ci_scrappygram;user=postgres;password=james',
-        'hostname' => 'localhost',
-        'username' => 'postgres',
-        'password' => 'james',
-        'database' => 'ci_scrappygram',
-        'dbdriver' => 'pdo',
+        // 'dsn'   => 'pgsql:ec2-107-22-250-212.compute-1.amazonaws.com;port=5432;dbname=d155nktfa27sm4;user=vuvsizazbuhdgy;password=kpbxfYeR_z63n2AHSfsBgAeOFO',
+		'dsn'		=> 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
+        'hostname' => 'ec2-54-243-203-85.compute-1.amazonaws.com',
+        // 'username' => 'vuvsizazbuhdgy',
+        'username' => $dbopts["user"],
+        'password' => $dbopts["pass"], 
+        // 'password' => 'kpbxfYeR_z63n2AHSfsBgAeOFO',
+        // 'database' => 'd155nktfa27sm4',
+        'database' => ltrim($dbopts["path"],'/'),
+        'dbdriver' => 'pdo',	
         'dbprefix' => '',
         'pconnect' => FALSE,
         'db_debug' => TRUE,
@@ -121,4 +125,3 @@ $db['default'] = array(
         'port'		=> 5432
 );
 
-*/
