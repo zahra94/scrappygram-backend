@@ -2,7 +2,7 @@
 	<div class="container">
 		<?php if (ENVIRONMENT=='development'): ?>
 			<p class="pull-right text-muted">
-				CI Bootstrap Version: <strong><?php echo CI_SCRAPPYGRAM; ?></strong>, 
+				ScrappyGram Version: <strong><?php echo CI_SCRAPPYGRAM; ?></strong>, 
 				CI Version: <strong><?php echo CI_VERSION; ?></strong>, 
 				Elapsed Time: <strong>{elapsed_time}</strong> seconds, 
 				Memory Usage: <strong>{memory_usage}</strong>
