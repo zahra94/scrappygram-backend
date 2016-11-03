@@ -100,17 +100,14 @@ $query_builder = TRUE;
 // PostgreSql Configuration
 $dbopts = parse_url(getenv('DATABASE_URL'));
 
-$db['default'] = array(
-        // 'dsn'   => 'pgsql:ec2-107-22-250-212.compute-1.amazonaws.com;port=5432;dbname=d155nktfa27sm4;user=vuvsizazbuhdgy;password=kpbxfYeR_z63n2AHSfsBgAeOFO',
-		'dsn'		=> 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
-        'hostname' => 'ec2-54-243-203-85.compute-1.amazonaws.com',
-        // 'username' => 'vuvsizazbuhdgy',
-        'username' => $dbopts["user"],
-        'password' => $dbopts["pass"], 
-        // 'password' => 'kpbxfYeR_z63n2AHSfsBgAeOFO',
-        // 'database' => 'd155nktfa27sm4',
-        'database' => ltrim($dbopts["path"],'/'),
-        'dbdriver' => 'pdo',	
+if (strpos($_SERVER['HTTP_HOST'], "lc.scrappygram") !== false) {
+        $db['default'] = array(
+        'dsn'      => 'pgsql:dbname=scrappygram;host=localhost;port=5432',
+        'hostname' => 'localhost',
+        'username' => 'postgres',
+        'password' => 'james', 
+        'database' => 'scrappygram',
+        'dbdriver' => 'pdo',    
         'dbprefix' => '',
         'pconnect' => FALSE,
         'db_debug' => TRUE,
@@ -122,6 +119,34 @@ $db['default'] = array(
         'compress' => FALSE,
         'stricton' => FALSE,
         'failover' => array(),
-        'port'		=> 5432
-);
+        'port'          => 5432
+        );
+        
+} else {
+        
+        $db['default'] = array(
+                // 'dsn'   => 'pgsql:ec2-107-22-250-212.compute-1.amazonaws.com;port=5432;dbname=d155nktfa27sm4;user=vuvsizazbuhdgy;password=kpbxfYeR_z63n2AHSfsBgAeOFO',
+                'dsn'           => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
+                'hostname' => 'ec2-54-243-203-85.compute-1.amazonaws.com',
+                // 'username' => 'vuvsizazbuhdgy',
+                'username' => $dbopts["user"],
+                'password' => $dbopts["pass"], 
+                // 'password' => 'kpbxfYeR_z63n2AHSfsBgAeOFO',
+                // 'database' => 'd155nktfa27sm4',
+                'database' => ltrim($dbopts["path"],'/'),
+                'dbdriver' => 'pdo',    
+                'dbprefix' => '',
+                'pconnect' => FALSE,
+                'db_debug' => TRUE,
+                'cache_on' => FALSE,
+                'cachedir' => '',
+                'char_set' => 'utf8',
+                'swap_pre' => '',
+                'encrypt' => FALSE,
+                'compress' => FALSE,
+                'stricton' => FALSE,
+                'failover' => array(),
+                'port'          => 5432
+        );
+}
 
