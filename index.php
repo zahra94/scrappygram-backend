@@ -54,12 +54,12 @@
  * NOTE: If you change these, also change the error_reporting() code below
  */
 
-	if (strpos($_SERVER['HTTP_HOST'], 'scrappygram.com') !== false ) {
-		define('ENVIRONMENT', 'production');
-	} else {
-		define('ENVIRONMENT', 'development');
-	}
-	// define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+	// if (strpos($_SERVER['HTTP_HOST'], 'scrappygram.com') !== false ) {
+	// 	define('ENVIRONMENT', 'production');
+	// } else {
+	// 	define('ENVIRONMENT', 'development');
+	// }
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
