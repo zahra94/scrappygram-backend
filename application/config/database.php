@@ -121,18 +121,14 @@ if (strpos($_SERVER['HTTP_HOST'], "lc.scrappygram") !== false) {
         'failover' => array(),
         'port'          => 5432
         );
-        
+
 } else {
         
         $db['default'] = array(
-                // 'dsn'   => 'pgsql:ec2-107-22-250-212.compute-1.amazonaws.com;port=5432;dbname=d155nktfa27sm4;user=vuvsizazbuhdgy;password=kpbxfYeR_z63n2AHSfsBgAeOFO',
-                'dsn'           => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
+                'dsn'      => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
                 'hostname' => 'ec2-54-243-203-85.compute-1.amazonaws.com',
-                // 'username' => 'vuvsizazbuhdgy',
                 'username' => $dbopts["user"],
                 'password' => $dbopts["pass"], 
-                // 'password' => 'kpbxfYeR_z63n2AHSfsBgAeOFO',
-                // 'database' => 'd155nktfa27sm4',
                 'database' => ltrim($dbopts["path"],'/'),
                 'dbdriver' => 'pdo',    
                 'dbprefix' => '',
