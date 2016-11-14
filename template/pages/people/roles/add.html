@@ -1,0 +1,141 @@
+<!-- Right side column. Contains the navbar and content of the page -->
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1><?php _e('Roles'); ?><small> <?php _e('Manage roles'); ?></small></h1>
+		<ol class="breadcrumb"><li><a href="?route=dashboard"><i class="fa fa-dashboard"></i> <?php _e('Home'); ?></a></li><li><?php _e('People'); ?></li><li><a href="?route=people/roles"><?php _e('Roles'); ?></a></li><li class="active"><?php _e('Create'); ?></li></ol>
+	</section>
+
+	<!-- Main content -->
+	<section class="content">
+		<?php if(!empty($statusmessage)): ?>
+				<div class="row"><div class='col-md-12'><div class="alert alert-<?php print $statusmessage["type"]; ?> alert-auto" role="alert"><?php print __($statusmessage["message"]); ?></div></div></div>
+		<?php endif; ?>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-primary">
+          			<div class="box-header with-border"><h3 class="box-title"><?php _e('Create New Role'); ?></h3></div><!-- /.box-header -->
+                    <div class="box-body">
+
+
+						<div class="row roles">
+
+							<form role="form" method="post" class="form-horizontal" style="padding:15px;" name="roleForm">
+								<div class="col-md-12">
+								    <div class="form-group">
+								        <label for="name"><?php _e('Name'); ?> *</label>
+								        <input type="text" class="form-control" id="name" name="name" required>
+								    </div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="type"><?php _e('Role Type'); ?></label>
+										<select class="form-control select2 select2-hidden-accessible" id="type" name="type" style="width: 100%;" tabindex="-1" aria-hidden="true">
+											<option value="admin"><?php _e('Staff'); ?></option>
+											<option value="user"><?php _e('User'); ?></option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-md-3">
+									<h4>Predefined Replies</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="addPReply"> <?php _e('Add'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="editPReply"> <?php _e('Edit'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="deletePReply"> <?php _e('Delete'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewPReplies"> <?php _e('View Predefined Replies'); ?></label></div>
+									<br>
+								</div>
+								<div class="col-md-3">
+									<h4>Files</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="uploadFile"> <?php _e('Upload'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="downloadFile"> <?php _e('Download'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="deleteFile"> <?php _e('Delete'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewFiles"> <?php _e('View Files'); ?></label></div>
+									<br>
+								</div>
+
+								<div class="col-md-3">
+									<h4>Users</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="addUser"> <?php _e('Add'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="editUser"> <?php _e('Edit'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="deleteUser"> <?php _e('Delete'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewUsers"> <?php _e('View Users'); ?></label></div>
+
+								</div>
+								<div class="col-md-3">
+									<h4>Staff</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="addStaff"> <?php _e('Add'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="editStaff"> <?php _e('Edit'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="deleteStaff"> <?php _e('Delete'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewStaff"> <?php _e('View Staff'); ?></label></div>
+
+								</div>
+								<div class="col-md-3">
+									<h4>Roles</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="addRole"> <?php _e('Add'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="editRole"> <?php _e('Edit'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="deleteRole"> <?php _e('Delete'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewRoles"> <?php _e('View Roles'); ?></label></div>
+								</div>
+								<div class="col-md-3">
+									<h4>Contacts</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="addContact"> <?php _e('Add'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="editContact"> <?php _e('Edit'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="deleteContact"> <?php _e('Delete'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewContacts"> <?php _e('View Contacts'); ?></label></div>
+								</div>
+
+								<div class="col-md-3">
+									<h4>System</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="manageData"> <?php _e('Manage Predefined Data'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="manageSettings"> <?php _e('Manage Settings'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewLogs"> <?php _e('View Logs'); ?></label></div>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewSystem"> <?php _e('View System'); ?></label></div>
+								</div>
+								<div class="col-md-3">
+									<h4>People</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewPeople"> <?php _e('View People'); ?></label></div>
+									<h4>Reports</h4>
+									<div class="checkbox"><label><input type="checkbox" name="perms[]" value="viewReports"> <?php _e('View Reports'); ?></label></div>
+									<br>
+								</div>
+
+								<input type="hidden" name="perms[]" value="Null">
+
+								<input type="hidden" name="action" value="addRole">
+								<input type="hidden" name="route" value="people/roles">
+								<input type="hidden" name="routeid" value="">
+								<input type="hidden" name="section" value="">
+
+								<div class="col-md-12">
+									<br><br><br>
+									<button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> <?php _e('Create'); ?></button>
+									<a onclick="javascript:checkAll('roleForm', true);" href="javascript:void();" class="btn btn-default" ><i class="fa fa-check-square-o"></i> Check All</a>
+									<a onclick="javascript:checkAll('roleForm', false);" href="javascript:void();" class="btn btn-default" ><i class="fa fa-square-o"></i> Uncheck All</a>
+								</div>
+
+							</form><!-- /.form -->
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- /.content -->
+</aside><!-- /.right-side -->
+
+<script type="text/javascript" language="javascript">// <![CDATA[
+	function checkAll(formname, checktoggle)
+	{
+	  var checkboxes = new Array();
+	  checkboxes = document[formname].getElementsByTagName('input');
+
+	  for (var i=0; i<checkboxes.length; i++)  {
+	    if (checkboxes[i].type == 'checkbox')   {
+	      checkboxes[i].checked = checktoggle;
+	    }
+	  }
+	}
+
+</script>

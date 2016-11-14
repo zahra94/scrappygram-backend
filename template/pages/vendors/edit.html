@@ -1,0 +1,184 @@
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1><?php echo $vendor['vendor_email']; ?><small> <?php _e('Edit Vendor account'); ?></small></h1>
+		<ol class="breadcrumb"><li><a href="?route=dashboard"><i class="fa fa-dashboard"></i> <?php _e('Home'); ?></a></li><li class="active"><?php _e('Vendors'); ?></li></ol>
+	</section>
+
+	<!-- Main content -->
+	<section class="content">
+		<?php if(!empty($statusmessage)): ?>
+				<div class="row"><div class='col-md-12'><div class="alert alert-<?php print $statusmessage["type"]; ?> alert-auto" role="alert"><?php print __($statusmessage["message"]); ?></div></div></div>
+		<?php endif; ?>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-default">
+                    <div class="box-body">
+						<div class="row">
+							<form role="form" method="post" class="form-horizontal">
+
+								<div class="form-group">
+									<label for="vendor_email" class="col-sm-2 control-label"><?php _e('Email Address'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="email" class="form-control" id="vendor_email" name="vendor_email" value="<?php echo $vendor['vendor_email']; ?>" required>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="vendor_country" class="col-sm-2 control-label"><?php _e('Country'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="hidden" class="form-control" id="vendor_country" name="vendor_country" value="<?php echo $vendor['vendor_country']; ?>">
+										
+										<div class="bfh-selectbox bfh-countries vendor-country" id="vendor_country_select" data-country="<?php echo $vendor['vendor_country']; ?>" data-flags="true">
+								              <input type="hidden" id="vendor_country" value="<?php echo $vendor['vendor_country']; ?>" name="vendor_country" required>
+								              <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+								                <span class="bfh-selectbox-option input-medium" data-option=""></span>
+								                <b class="caret"></b>
+								              </a>
+								              <div class="bfh-selectbox-options" >
+								                <input type="text" class="bfh-selectbox-filter">
+								                <div role="listbox">
+								                <ul role="option">
+								                </ul>
+								                </div>
+					              		  	</div>
+								        </div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="vendor_state" class="col-sm-2 control-label"><?php _e('State'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="hidden" class="form-control" id="vendor_state" name="vendor_state" value="<?php echo $vendor['vendor_state']; ?>">
+										<div class="bfh-selectbox bfh-states vendor-states" data-state="<?php echo $vendor['vendor_state']; ?>" data-country="vendor_country_select">
+								          <input type="hidden" value="<?php echo $vendor['vendor_state']; ?>">
+								          <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+								            <span class="bfh-selectbox-option input-medium" data-option=""></span>
+								            <b class="caret"></b>
+								          </a>
+								          <div class="bfh-selectbox-options" >
+								          <div role="listbox">
+								            <ul role="option">
+								            </ul>
+								            </div>
+								          </div>
+								        </div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="vendor_zipcode" class="col-sm-2 control-label"><?php _e('Zip Code'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="vendor_zipcode" name="vendor_zipcode" value="<?php echo $vendor['vendor_zipcode']; ?>">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="vendor_saturday" class="col-sm-2 control-label"><?php _e('Saturday'); ?> *</label>
+									<div class="col-sm-8">
+										<select class="form-control select2 select2-hidden-accessible" id="vendor_saturday" name="vendor_saturday" style="width: 80%;" tabindex="-1" aria-hidden="true">
+					                        <option value="1" <?php if($vendor['vendor_saturday'] == 1) echo "selected"; ?>><?php _e('Yes'); ?></option>
+					                        <option value="0" <?php if($vendor['vendor_saturday'] == 0) echo "selected"; ?>><?php _e('No'); ?></option>
+					                    </select>
+				                    </div>
+									
+								</div>
+								
+								<div class="form-group">
+									<label for="vendor_sunday" class="col-sm-2 control-label"><?php _e('Sunday'); ?> *</label>
+									<div class="col-sm-8">
+										<select class="form-control select2 select2-hidden-accessible" id="vendor_sunday" name="vendor_sunday" style="width: 80%;" tabindex="-1" aria-hidden="true">
+					                        <option value="1" <?php if($vendor['vendor_sunday'] == 1) echo "selected"; ?>><?php _e('Yes'); ?></option>
+					                        <option value="0" <?php if($vendor['vendor_sunday'] == 0) echo "selected"; ?>><?php _e('No'); ?></option>
+					                    </select>
+				                    </div>
+								</div>
+								
+								<div class="form-group">
+									<label for="vendor_cls_time" class="col-sm-2 control-label"><?php _e('Vendor Closing Time'); ?></label>
+									<div class="col-sm-8">
+										<input type="hidden" id="vendor_cls_time" name="vendor_cls_time" value="<?php echo $vendor['vendor_cls_time']; ?>">
+										<div class="bfh-timepicker vendor-timezones" data-time="<?php echo $vendor['vendor_cls_time']; ?>">
+										  <div class="input-prepend bfh-timepicker-toggle" data-toggle="bfh-timepicker">
+										    <span class="add-on"><i class="icon-time"></i></span>
+										    <input type="text"  class="input-medium" readonly>
+										  </div>
+										  <div class="bfh-timepicker-popover">
+										    <table class="table">
+										      <tbody>
+										        <tr>
+										          <td class="hour">
+										            <a class="next" href="#"><i class="icon-chevron-up"></i></a><br>
+										            <input type="text" class="input-mini" readonly><br>
+										            <a class="previous" href="#"><i class="icon-chevron-down"></i></a>
+										          </td>
+										          <td class="separator">:</td>
+										          <td class="minute">
+										            <a class="next" href="#"><i class="icon-chevron-up"></i></a><br>
+										            <input type="text" class="input-mini" readonly><br>
+										            <a class="previous" href="#"><i class="icon-chevron-down"></i></a>
+										          </td>
+										        </tr>
+										      </tbody>
+										    </table>
+										  </div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="vendor_timezone" class="col-sm-2 control-label"><?php _e('Time Zone'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="hidden" class="form-control" id="vendor_timezone" name="vendor_timezone" value="<?php echo $vendor['vendor_timezone']; ?>">
+										<div class="bfh-selectbox bfh-timezones vendor-timezones" data-country="vendor_country_select" data-timezone="<?php echo $vendor['vendor_timezone']; ?>">
+										  <input type="hidden" value="">
+										  <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+										    <span class="bfh-selectbox-option input-medium" data-option=""></span>
+										    <b class="caret"></b>
+										  </a>
+										  <div class="bfh-selectbox-options">
+										  <div role="listbox">
+										    <ul role="option">
+										    </ul>
+										  </div>
+										  </div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="vendor_rating" class="col-sm-2 control-label"><?php _e('Rating'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="vendor_rating" name="vendor_rating" value="<?php echo $vendor['vendor_rating']; ?>">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="vendor_order_limit" class="col-sm-2 control-label"><?php _e('Order Limit'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="vendor_order_limit" name="vendor_order_limit" value="<?php echo $vendor['vendor_order_limit']; ?>">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="vendor_order_count" class="col-sm-2 control-label"><?php _e('Order Limit'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="vendor_order_count" name="vendor_order_count" value="<?php echo $vendor['vendor_order_count']; ?>">
+									</div>
+								</div>
+								
+								<input type="hidden" name="action" value="editVendor">
+								<input type="hidden" name="route" value="vendors/edit">
+								<input type="hidden" name="routeid" value="<?php echo $vendor['id']; ?>">
+								<input type="hidden" name="id" value="<?php echo $vendor['id']; ?>">
+
+								<div class="col-sm-2"></div><div class="col-sm-8">
+									<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?php _e('Save'); ?></button>
+								</div>
+
+
+							</form><!-- /.form -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- /.content -->
+</aside><!-- /.right-side -->

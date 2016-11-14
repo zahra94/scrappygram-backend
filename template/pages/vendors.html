@@ -1,0 +1,76 @@
+
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1 class="pull-left"><?php _e('Vendors'); ?><small> <?php _e('Manage Vendor accounts'); ?></small></h1>
+		<div class="pull-right"><?php if(in_array("addUser",$perms)) { ?><a onClick='showM("index.php?modal=vendors/add&reroute=vendors&routeid=&section=");return false' data-toggle="modal" class="btn btn-primary btn-sm"><i class="fa fa-user"></i> <?php _e('ADD VENDOR ACCOUNT'); ?></a><?php } ?></div>
+		<div style="clear:both"></div>
+	</section>
+	<!-- Main content -->
+	<section class="content">
+		<?php if(!empty($statusmessage)): ?>
+				<div class="row"><div class='col-md-12'><div class="alert alert-<?php print $statusmessage["type"]; ?> alert-auto" role="alert"><?php print __(str_replace("%user%", "Vendor", $statusmessage["message"])); ?></div></div></div>
+		<?php endif; ?>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-primary">
+                    <div class="box-body">
+						<div class="table-responsive">
+	                        <table id="dataTablesFull" class="table table-striped table-hover">
+	                            <thead>
+	                                <tr>
+	                                    <th><?php _e('Vendor ID'); ?></th>
+										<th><?php _e('Email Address'); ?></th>
+										<th><?php _e('Country'); ?></th>
+										<th><?php _e('State'); ?></th>
+										<th><?php _e('Zip Code'); ?></th>
+										<th><?php _e('Saturday'); ?></th>
+										<th><?php _e('Sunday'); ?></th>
+										<th><?php _e('Vendor Closing Time'); ?></th>
+										<th><?php _e('Time Zone'); ?></th>
+										<th><?php _e('Rating'); ?></th>
+										<th><?php _e('Order Count'); ?></th>
+										<th><?php _e('Order Limit'); ?></th>
+										
+										<th class="text-right"></th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+									<?php
+									foreach ($datas as $data) {
+	                                echo "<tr>";
+	                                    echo "<td>".$data['vendor_id']."</td>";
+	                                    echo "<td>".$data['vendor_email']."</td>";
+	                                    echo "<td>".$data['vendor_country']."</td>";
+	                                    echo "<td>".$data['vendor_state']."</td>";
+										echo "<td>".$data['vendor_zipcode']."</td>";
+										if ($data['vendor_saturday'])
+											echo "<td>Yes</td>";
+										else 
+											echo "<td>No</td>";
+										if ($data['vendor_sunday'])
+											echo "<td>Yes</td>";
+										else 
+											echo "<td>No</td>";
+										echo "<td>".$data['vendor_cls_time']."</td>";
+										echo "<td>".$data['vendor_timezone']."</td>";
+										echo "<td>".$data['vendor_rating']."</td>";
+										echo "<td>".$data['vendor_order_count']."</td>";
+										echo "<td>".$data['vendor_order_limit']."</td>";
+										
+										echo "<td><div class='pull-right'>";
+											echo "<a href='?route=vendors/edit&id=".$data['id']."' class='btn-right text-dark'><i class='fa fa-edit'></i></a>&nbsp;";
+											echo "<a href='#' onClick='showM(\"?modal=vendors/delete&reroute=vendors&routeid=&id=".$data['id']."&section=\");return false' class='btn-right text-red'><i class='fa fa-trash-o'></i></a>";
+										echo "</div></td>";
+	                                echo "</tr>";
+									}
+									?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- /.content -->
+</aside><!-- /.right-side -->

@@ -1,0 +1,134 @@
+<aside class="right-side">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1><?php echo $customer['first_name']." ".$customer['last_name']; ?><small> <?php _e('Edit Customer account'); ?></small></h1>
+		<ol class="breadcrumb"><li><a href="?route=dashboard"><i class="fa fa-dashboard"></i> <?php _e('Home'); ?></a></li><li class="active"><?php _e('Customers'); ?></li></ol>
+	</section>
+
+	<!-- Main content -->
+	<section class="content">
+		<?php if(!empty($statusmessage)): ?>
+				<div class="row"><div class='col-md-12'><div class="alert alert-<?php print $statusmessage["type"]; ?> alert-auto" role="alert"><?php print __($statusmessage["message"]); ?></div></div></div>
+		<?php endif; ?>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box box-default">
+                    <div class="box-body">
+						<div class="row">
+							<form role="form" method="post" class="form-horizontal">
+								<div class="form-group">
+									<label for="first_name" class="col-sm-2 control-label"><?php _e('First Name'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $customer['first_name']; ?>" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="last_name" class="col-sm-2 control-label"><?php _e('Last Name'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo $customer['last_name']; ?>" required>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="email" class="col-sm-2 control-label"><?php _e('Email Address'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="email" class="form-control" id="email" name="email" value="<?php echo $customer['email']; ?>" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="country" class="col-sm-2 control-label"><?php _e('Country'); ?></label>
+									<div class="col-sm-8">
+										<input type="hidden" class="form-control" id="country" name="country" value="<?php echo $customer['country']; ?>">
+										
+										<div class="bfh-selectbox bfh-countries country" id="country_select" data-country="<?php echo $customer['country']; ?>" data-flags="true">
+								              <input type="hidden" name >
+								              <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+								                <span class="bfh-selectbox-option input-medium" data-option=""></span>
+								                <b class="caret"></b>
+								              </a>
+								              <div class="bfh-selectbox-options" >
+								                <input type="text" class="bfh-selectbox-filter">
+								                <div role="listbox">
+								                <ul role="option">
+								                </ul>
+								                </div>
+					              		  	</div>
+								        </div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="state" class="col-sm-2 control-label"><?php _e('State'); ?></label>
+									<div class="col-sm-8">
+										<input type="hidden" class="form-control" id="state" name="state" value="<?php echo $customer['state']; ?>">
+										<div class="bfh-selectbox bfh-states states" data-state="<?php echo $customer['state']; ?>" data-country="country_select">
+								          <input type="hidden" value="<?php echo $customer['state']; ?>">
+								          <a class="bfh-selectbox-toggle" role="button" data-toggle="bfh-selectbox" href="#">
+								            <span class="bfh-selectbox-option input-medium" data-option=""></span>
+								            <b class="caret"></b>
+								          </a>
+								          <div class="bfh-selectbox-options" >
+								          <div role="listbox">
+								            <ul role="option">
+								            </ul>
+								            </div>
+								          </div>
+								        </div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="city" class="col-sm-2 control-label"><?php _e('City'); ?></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="city" name="city" value="<?php echo $customer['city']; ?>">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="address" class="col-sm-2 control-label"><?php _e('Address'); ?></label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="address" name="address" value="<?php echo $customer['address']; ?>">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="phone" class="col-sm-2 control-label"><?php _e('Phone Number'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control input-medium bfh-phone" id="phone" name="phone" data-country="US" value="<?php echo $customer['phone']; ?>" required>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="zipcode" class="col-sm-2 control-label"><?php _e('Zip Code'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="zipcode" name="zipcode" value="<?php echo $customer['zipcode']; ?>" required>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="password" class="col-sm-2 control-label"><?php _e('Password'); ?> *</label>
+									<div class="col-sm-8">
+										<input type="password" class="form-control" id="password" name="password" placeholder="Enter to change" required>
+									</div>
+								</div>
+								
+								<input type="hidden" name="action" value="editCustomer">
+								<input type="hidden" name="route" value="customers/edit">
+								<input type="hidden" name="routeid" value="<?php echo $customer['id']; ?>">
+								<input type="hidden" name="id" value="<?php echo $customer['id']; ?>">
+
+								<div class="col-sm-2"></div><div class="col-sm-8">
+									<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?php _e('Save'); ?></button>
+								</div>
+
+
+							</form><!-- /.form -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+	</section><!-- /.content -->
+</aside><!-- /.right-side -->
