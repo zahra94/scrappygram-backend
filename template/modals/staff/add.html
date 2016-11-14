@@ -17,8 +17,8 @@
         <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
     </div>
     <div class="form-group">
-        <label for="mobile"><?php _e('Mobile Number'); ?></label>
-        <input type="text" class="form-control" id="mobile" minlength="10" maxlength="10" autocomplete="off" name="mobile">
+        <label for="phone"><?php _e('Phone Number'); ?></label>
+        <input type="text" class="form-control input-medium bfh-phone" id="mobile" name="mobile" data-country="US" required>
     </div>
     <div class="form-group">
         <label for="title"><?php _e('Job Title'); ?></label>
@@ -26,6 +26,7 @@
     </div>
     <div class="form-group">
         <label for="password"><?php _e('Password'); ?> *</label>
+        <input type="password" name="password" id="password_fake" class="hidden" autocomplete="off" style="display: none;">
         <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
     </div>
     <div class="form-group"><div class="checkbox"><label><input type="checkbox" name="notification" value="true" checked="yes"> <?php _e('Send new staff account email notification'); ?></label></div></div>

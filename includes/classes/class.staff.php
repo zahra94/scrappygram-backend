@@ -27,7 +27,8 @@ class Staff extends App {
     		"resetkey" => "",
     		"autorefresh" => 0,
     		"lang" => getConfigValue("default_lang"),
-    		"ticketsnotification" => 1
+    		"ticketsnotification" => 1,
+            'avatar'    => ''
     		]);
 			if(isset($data['notification'])) { if($data['notification'] == true) Notification::newUser($lastid,$data['password']); }
 			logSystem("Staff Account Added - ID: " . $lastid);

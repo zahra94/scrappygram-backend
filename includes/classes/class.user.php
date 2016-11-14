@@ -28,7 +28,8 @@ class User extends App {
     		"resetkey" => "",
     		"autorefresh" => 0,
     		"lang" => getConfigValue("default_lang"),
-    		"ticketsnotification" => 0
+    		"ticketsnotification" => 0,
+            'avatar'    =>''
     		]);
 		
         if(isset($data['notification'])) { if($data['notification'] == true) Notification::newUser($lastid,$data['password']); }
