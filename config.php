@@ -1,13 +1,5 @@
 <?php
-//  $DBconfig = array(
-//     "database_type"=>"mysql",
-//     "database_name"=>"novotrak",
-//     "server"=>"localhost",
-//     "username"=>"james",
-//     "password"=>"james",
-//     "charset"=>"utf8",
-//     "port"=>3306
-// );
+
 if (strpos($_SERVER['SERVER_NAME'], "herokuapp.com") !== false) {
 	
 	$DBconfig = array(
