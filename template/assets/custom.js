@@ -82,6 +82,9 @@ $(document).ready(function() {
 			var state_id = $(this).val();
 			$('input[name=state]').val(state_id);
 		});
+
+		// Init
+		$('.bfh-timepicker').trigger('change');
 	});
 
 	// Vendor Page
@@ -117,5 +120,6 @@ $(document).ready(function() {
 		$('input[name=state]').val(state_id);
 	});
 
-
+	$('.bfh-countries').trigger('change');
+	
 });
