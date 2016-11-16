@@ -230,6 +230,19 @@ switch($_POST['action']) {
 		$status = Vendor::delete($_POST['id']);
 		break;
 
+	// Orders
+	case "addOrder":
+		$status = Order::add($_POST);
+		break;
+
+	case "viewOrder":
+		$status = Order::view($_POST);
+		break;
+
+	case "deleteOrder":
+		$status = Order::delete($_POST['id']);
+		break;
+
 
 	// users
 	case "addUser":

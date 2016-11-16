@@ -555,17 +555,26 @@ if ($route == "customers/edit") {
 	$pageTitle = __("Edit Customer");
 }
 
-// Customers
+// Vendors
 if ($route == "vendors") {
-	// isAuthorized("viewCustomer");
 	$datas = getTable("vendors");
 	$pageTitle = __("Vendors");
 }
 
 if ($route == "vendors/edit") {
-	// isAuthorized("editCustomer");
 	$vendor = getRowById("vendors",$_GET['id']);
 	$pageTitle = __("Edit Vendor");
+}
+
+// Orders
+if ($route == "orders") {
+	$orders = getTable("orders");
+	$pageTitle = __("Orders");
+}
+
+if ($route == "orders/view") {
+	$order = getRowById("orders",$_GET['id']);
+	$pageTitle = __("View Order");
 }
 
 
