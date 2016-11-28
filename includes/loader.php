@@ -39,7 +39,8 @@ $database = new medoo($DBconfig);
 session_start();
 
 ### DATE & TIME ###
-date_default_timezone_set(getConfigValue("timezone"));
+
+date_default_timezone_set(date_default_timezone_get ( ));
 $datetime = date("Y-m-d H:i:s");
 $date = date("Y-m-d");
 

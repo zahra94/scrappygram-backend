@@ -134,6 +134,7 @@ class medoo
 			{
 				$commands[] = "SET NAMES '" . $this->charset . "'";
 			}
+			//set_time_limit(120);
 
 			$this->pdo = new PDO(
 				$dsn,

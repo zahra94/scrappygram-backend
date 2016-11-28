@@ -60,7 +60,7 @@ class Customer extends App {
     	logSystem("Customer Account Deleted - ID: " . $id);
     	return "30";
     }
-
+    
 }
 
 
