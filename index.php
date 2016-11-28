@@ -15,6 +15,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 $app = new \Slim\App;
 
 
+
+
 $app->post('/registerCustomer', function (Request $request, Response $response) use ($app){
     print_r('ljl');
     die();
